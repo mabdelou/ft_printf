@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../lib/ft_printf.h"
 
 int	ft_read_hex(unsigned long int nb)
 {

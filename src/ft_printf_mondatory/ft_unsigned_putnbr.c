@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_nb.c                                      :+:      :+:    :+:   */
+/*   ft_unsigned_putnbr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 15:32:12 by mabdelou          #+#    #+#             */
-/*   Updated: 2021/11/29 15:35:04 by mabdelou         ###   ########.fr       */
+/*   Created: 2021/11/29 15:52:14 by mabdelou          #+#    #+#             */
+/*   Updated: 2021/11/29 15:53:55 by mabdelou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../lib/ft_printf.h"
 
-int	ft_print_nb(long nb)
+void	print_num(char c)
 {
-	int	nbr_len;
+	write(1, &c, 1);
+}
 
-	nbr_len = 1;
-	if (nb < 0)
+int	ft_unsigned_putnbr(unsigned int nb)
+{
+	int	a;
+
+	a = ft_print_nb(nb);
+	if (nb < 10)
 	{
-		nb *= -1;
-		nbr_len++;
+		print_num(nb + '0');
 	}
-	while (nb >= 10)
+	else
 	{
-		nb = nb / 10;
-		nbr_len++;
+		ft_putnbr(nb / 10);
+		print_num(nb % 10 + '0');
 	}
-	return (nbr_len);
+	return (a);
 }

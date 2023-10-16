@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putdownhex.c                                    :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 15:43:47 by mabdelou          #+#    #+#             */
-/*   Updated: 2021/11/29 15:45:22 by mabdelou         ###   ########.fr       */
+/*   Created: 2021/08/05 15:20:23 by mabdelou          #+#    #+#             */
+/*   Updated: 2021/08/07 18:20:28 by mabdelou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../lib/ft_printf.h"
 
-int	ft_putdownhex(unsigned int base)
+int	ft_putchar(char c)
 {
-	char	*hex;
-	int		a;
-
-	a = ft_read_hex(base);
-	hex = "0123456789abcdef";
-	if (base >= 16)
-		ft_putdownhex(base / 16);
-	ft_putchar(hex[base % 16]);
-	return (a);
+	write(1, &c, 1);
+	return (1);
 }

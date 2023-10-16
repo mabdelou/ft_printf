@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../lib/ft_printf.h"
 
 int	ft_printf_v2(va_list lst, char c, int a)
 {

@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned_putnbr.c                               :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 15:52:14 by mabdelou          #+#    #+#             */
-/*   Updated: 2021/11/29 15:53:55 by mabdelou         ###   ########.fr       */
+/*   Created: 2021/08/23 10:55:41 by mabdelou          #+#    #+#             */
+/*   Updated: 2021/11/29 15:50:39 by mabdelou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../lib/ft_printf.h"
 
-void	print_num(char c)
-{
-	write(1, &c, 1);
-}
-
-int	ft_unsigned_putnbr(unsigned int nb)
+int	ft_putnbr(int nb)
 {
 	int	a;
 
 	a = ft_print_nb(nb);
-	if (nb < 10)
+	if (nb == -2147483648)
 	{
-		print_num(nb + '0');
+		write(1, "-2147483648", 11);
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = nb * -1;
+		ft_putnbr(nb);
+	}
+	else if (nb < 10)
+	{
+		ft_putchar(nb + '0');
 	}
 	else
 	{
 		ft_putnbr(nb / 10);
-		print_num(nb % 10 + '0');
+		ft_putchar(nb % 10 + '0');
 	}
 	return (a);
 }

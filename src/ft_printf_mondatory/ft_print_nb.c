@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putuphex.c                                      :+:      :+:    :+:   */
+/*   ft_print_nb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 15:47:45 by mabdelou          #+#    #+#             */
-/*   Updated: 2021/11/29 15:49:56 by mabdelou         ###   ########.fr       */
+/*   Created: 2021/11/29 15:32:12 by mabdelou          #+#    #+#             */
+/*   Updated: 2021/11/29 15:35:04 by mabdelou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../lib/ft_printf.h"
 
-int	ft_putuphex(unsigned int base)
+int	ft_print_nb(long nb)
 {
-	char	*hex;
-	int		a;
+	int	nbr_len;
 
-	a = ft_read_hex(base);
-	hex = "0123456789ABCDEF";
-	if (base >= 16)
-		ft_putuphex(base / 16);
-	ft_putchar(hex[base % 16]);
-	return (a);
+	nbr_len = 1;
+	if (nb < 0)
+	{
+		nb *= -1;
+		nbr_len++;
+	}
+	while (nb >= 10)
+	{
+		nb = nb / 10;
+		nbr_len++;
+	}
+	return (nbr_len);
 }
